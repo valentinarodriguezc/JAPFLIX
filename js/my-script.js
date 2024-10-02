@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             // Almacenar los datos en la variable 'peliculas'
             peliculas = data;
-
+            mostrarPeliculas(peliculas); // Llama a la función para mostrar todas las películas
             //Datos cargados, pero no se muestran en la página
             console.log('Películas cargadas:', peliculas); // Solo para verificar en consola
         })
@@ -87,8 +87,8 @@ function mostrarDetallePelicula(pelicula) {
       <div>
         <h3>${pelicula.title}</h3>
         <p>${pelicula.overview}</p>
-        <p>Géneros: ${pelicula.genres.join(", ")}</p>
-      </div>
+         <p>Géneros: ${pelicula.genres.map(genero => genero.name).join(", ")}</p> <!-- Cambiado aquí -->
+            </div>
       <div>
         ${renderDropdown(
           pelicula
